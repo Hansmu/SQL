@@ -122,5 +122,18 @@ Functions can be used in SELECT and WHERE. SQL have built in functions. Can nest
 	MAX() - highest value in column. With text returns last value.
 	MIN() - lowest value in column. With text returns first entered value.
 	SUM() - sum of values in a column
-		SELECT AVG(salary) FROM employees WHERE manager_id = 100;
+		SELECT AVG(salary) FROM employees WHERE manager_id = 100; These return a single value, so can't combine it with a table field eg first_name.
+
+GROUP BY - group data. GROUP BY is used with aggregate functions, should come after WHERE clause. Can nest.
+	SELECT manager_id, AVG(salary) FROM employees GROUP BY manager_id; Gets all the salaries that are under that manager and gets the average of their salaries.
+
+HAVING - used to filter groups. Like WHERE but for groups. WHERE is faster than HAVING. Should prefer WHERE.
+	SELECT manager_id, COUNT(*) employee_count FROM employees GROUP BY manager_id HAVING COUNT(*) >= 2; HAVING filters by aggregate functions.
+
+SELECT - mandatory
+FROM - mandatory
+WHERE - optional
+GROUP BY - optional with aggregate functions only
+HAVING - optional with GROUP BY only
+ORDER BY - optional
 **/
